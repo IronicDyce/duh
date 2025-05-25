@@ -18,18 +18,21 @@ const config = {
   },
   sections: [
     {
+      id: 'section1',
       title: '',
       text: 'No one knows how it got here. One minute, it was just another JPEG in a sea of memecoins. The next, it awoke in a swirling digital K-hole, its fur an unnatural shade of purple, its pupils dilated into vast, unblinking voids.',
       buttonText: 'WHO AM I →',
       image: '/image1.jpg'
     },
     {
+      id: 'section2',
       title: 'SOLANA\nWILL PROVIDE',
       text: 'Somewhere in the neon-lit void of the Solana blockchain, a lone figure drifts—eternally blissful, eternally lost.',
       buttonText: 'WHERE AM I',
       image: '/image2.jpg'
     },
     {
+      id: 'section3',
       title: 'PUMP IT UP',
       text: 'It doesn’t walk—he floats. His reality is a soft, glitchy haze where time moves in loops, and every transaction confirmation feels like an eternity.',
       buttonText: 'WHAT AM I',
@@ -39,6 +42,7 @@ const config = {
   ],
   postSections: [
     {
+      id: 'postSectionsStart',
       title: 'SOLANA SOLVES EVERYTHING',
       subtitle: 'ZERO MEMORY OF WHAT HAPPENED FIVE MINUTES AGO',
       text: 'Responsibility is for people who haven’t yet experienced the sublime joy of forgetting who they are and everyone around them.',
@@ -62,7 +66,7 @@ const config = {
 
 const KetcatLandingPage = () => {
   return (
-    <div className="text-white" style={{ backgroundColor: config.theme.secondary }}>
+    <div className="text-white" style={{ backgroundImage: 'url(/background.jpg)', backgroundColor: config.theme.secondary, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <header className="text-center py-10">
         <div className="flex justify-center gap-4 mb-4">
           <a href={config.links.pill}><PiPillDuotone size={32} /></a>
@@ -74,18 +78,22 @@ const KetcatLandingPage = () => {
       </header>
 
       {config.sections.map((section, i) => (
-        <section key={i} className={`flex flex-col md:flex-row ${section.reverse ? 'md:flex-row-reverse' : ''} items-center justify-center py-10 gap-10`}>
+        <section id={section.id} key={i} className={`flex flex-col md:flex-row ${section.reverse ? 'md:flex-row-reverse' : ''} items-center justify-center py-10 gap-10`}>
           <img src={section.image} alt="section" className="w-80 rounded-xl" />
           <div className="max-w-lg text-center md:text-left">
             {section.title && <h2 className="text-3xl font-bold mb-2 whitespace-pre-line" style={{ color: config.theme.primary }}>{section.title}</h2>}
             <p className="mb-4 text-gray-300">{section.text}</p>
-            <button style={{ backgroundColor: config.theme.primary }} className="text-white px-6 py-2 rounded-full">{section.buttonText}</button>
+            {(config.sections[i + 1] || (i === config.sections.length - 1 && config.postSections.length > 0)) && (
+              <a href={`#${config.sections[i + 1]?.id || 'postSectionsStart'}`}>
+                <button style={{ backgroundColor: config.theme.primary }} className="text-white px-6 py-2 rounded-full">{section.buttonText}</button>
+              </a>
+            )}
           </div>
         </section>
       ))}
 
       {config.postSections.map((post, i) => (
-        <section key={i} className="flex flex-col items-center text-center py-8">
+        <section id={i === 0 ? 'postSectionsStart' : post.id || undefined} key={i} className="flex flex-col items-center text-center py-8">
           <img src={post.image} alt="post" className="w-64 rounded-xl mb-4" />
           <h3 className="text-2xl font-bold whitespace-pre-line" style={{ color: config.theme.primary }}>{post.title}</h3>
           <p className="mt-1" style={{ color: config.theme.primary }}>{post.subtitle}</p>
