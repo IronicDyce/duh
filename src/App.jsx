@@ -11,8 +11,8 @@ const config = {
     dark: '#1c1c1c'
   },
   links: {
-    pill: 'https://your-pill-link.com',
-    twitter: 'https://x.com/yourprofile'
+    pill: 'https://google.com',
+    twitter: 'https://google.com'
   },
   header: {
     title: 'Welcome in to what is all',
@@ -33,7 +33,7 @@ const KetcatLandingPage = () => {
       <div className="flex items-center justify-between px-6 py-4 text-sm" style={{ backgroundColor: config.theme.dark, color: config.theme.primary }}>
         <div className="font-bold">Duh Coin</div>
         <div className="flex items-center gap-2">
-          <a href="/" className="font-bold underline">Buy Is $DUH</a>
+          <a href="https://pump.fun/coin/GBcUQQpCM4LBdDgUcwCLXK7WjDsNykwgwEkmYxv1TJ3B" className="font-bold underline">Buy Is $DUH</a>
         </div>
       </div>
 
@@ -47,12 +47,9 @@ const KetcatLandingPage = () => {
         <h1 className="text-4xl md:text-5xl font-black" style={{ color: '#1c1c1c' }}>
           {config.header.title} <span style={{ color: config.theme.accent }}>{config.header.highlight}</span>
         </h1>
-        <button
-          className="mt-6 px-6 py-2 font-bold rounded-full uppercase"
-          style={{ backgroundColor: config.theme.accent, color: config.theme.primary }}
-        >
-          {config.header.button}
-        </button>
+        <a href="https://pump.fun/coin/GBcUQQpCM4LBdDgUcwCLXK7WjDsNykwgwEkmYxv1TJ3B" className="mt-6 inline-block px-6 py-2 font-bold rounded-full uppercase" style={{ backgroundColor: config.theme.accent, color: config.theme.primary }}>
+  {config.header.button}
+</a>
       </section>
 
       {/* Info Grid */}
@@ -77,7 +74,7 @@ const KetcatLandingPage = () => {
             Get unfiltered updates, share memes, and interact with a<br />
             community of degenerates.
           </p>
-          <a href="https://x.com/yourprofile" target="_blank" rel="noopener noreferrer">
+          <a href="https://x.com/i/communities/1921887080747303298" target="_blank" rel="noopener noreferrer">
             <button
               className="mt-6 px-6 py-2 font-bold rounded-full"
               style={{ backgroundColor: config.theme.accent, color: config.theme.dark }}
